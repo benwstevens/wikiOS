@@ -6,7 +6,7 @@
 
 **If you are the person:** download or clone this folder, open your LLM tool (Claude Code, Cursor, or similar) inside it, and say "set up wikiOS." The model reads this file and asks you what it needs. (In Claude Code the `/setup-wiki` command does the same, but only while you are in this folder; it is a project skill, not something installed on your machine.) Budget an hour for the conversation and a few days of ordinary use before wikiOS feels like yours.
 
-**If you are the model:** read this whole file, then `system/LLM-rules.md` and `system/wiki-os.md`. Then run the interview in Part B, a few questions at a time, writing the answers into the user's `customization.md` as you go so nothing is lost if the session ends. Then build what Part C describes. Do not skip questions because you can guess the answers; the point of the interview is that the user hears the choices.
+**If you are the model:** read this whole file, then `system/LLM-rules.md` and `system/wiki-os.md`. Then run the interview in Part B, a few questions at a time, writing the answers into the user's `customization.md` as you go so nothing is lost if the session ends. Then build what Part C describes. Do not skip questions because you can guess the answers; the point of the interview is that the user hears the choices. One exception to `LLM-rules.md` during the interview: skip the **Requests** recap at the end of each round. The round *is* the questions; repeating them underneath is noise. The recap rule applies again once the system is built.
 
 ## Where this comes from
 

@@ -50,7 +50,7 @@ A **layer** is one top-level folder with its own privacy rule. Most people need 
 
 **How the entry file works.** Claude Code loads `CLAUDE.md` from the working directory and every folder above it, and a line reading `@.system/LLM-rules.md` pulls that file in at launch. So the behaviour rules are active from the first message. Cursor reads `.cursorrules` or `AGENTS.md`; other tools have their own. If the user's tool has no import, paste the rules file's body into the entry file and note in `customization.md` that the two must be kept in step.
 
-**What a page looks like.** Frontmatter (a block of `field: value` lines between `---` markers: title, description, type, status, dates, tags), then the body in plain sentences with headings, then a `## Sources` section at the bottom with one bullet per dated source. Links are ordinary markdown links to other files by relative path. `templates/wiki-hub.md` and `templates/project-wiki.md` are finished examples.
+**What a page looks like.** Frontmatter (a block of `field: value` lines between `---` markers: title, description, type, status, dates, tags), then the body in plain sentences with headings, then a `## Sources` section at the bottom with one bullet per dated source. Links are ordinary markdown links to other files by relative path. `templates/wiki-hub.md`, `templates/matter-page.md`, `templates/domain-page.md`, and `templates/project-wiki.md` are finished examples.
 
 ---
 
@@ -70,41 +70,24 @@ Ask in this order, two or three questions at a time, in plain language. Give a d
 - **Permission mode.** Most tools have a setting for how much the model may do without asking. In Claude Code it is the Mode menu: *Auto* (the model handles permission decisions), *Manual* (always ask before making changes), *Accept edits* (file edits go through, other actions ask), *Plan* (plan before making changes), and a bypass setting. It makes a large difference to how fast the work goes. Recommend: **Manual for the first week**, while the user learns what the model does; then **Accept edits or Auto for everyday wiki work inside the workspace**, because wikiOS's own rules already force snapshots and approval on the changes that matter; **Plan mode for any big job**, which is also what wiki-os §3 asks for. Record the choice; if the tool has no such setting, say so.
 - Will the model run outside this workspace too (other projects on the same machine)? If yes, offer `templates/CLAUDE-global.md` for the tool's global config so the Requests-recap and writing rules apply everywhere.
 
-### 3. The folders (layers) and what is in them
-For each area from step 1: what the folder is called, one line on what it holds, and who sees it. Then its subjects (spokes): five to ten short names, or propose them from the existing tree. Ask which subjects already have a body of files and which are empty for now (empty spokes get a stub `wiki.md` and nothing else).
+### 3. What you are working on, and the shape of a page
+This is the round that decides whether the wiki holds together. Explain why before asking: **the structure of a wiki page depends on what the person is working on.** A page about a home renovation, a lawsuit, a sales account, a research topic, and a family member's schooling do not want the same headings. If pages are added before a shape is agreed, the notes come in disjointed and no later pass fixes that. So:
 
-### 4. Privacy
+- **Ask: "What are you actually working on, day to day? Describe the two or three kinds of thing you would want pages about."** Listen for whether there is *one consistent kind of thing* (every page is a client account; every page is a case; every page is a property) or *several kinds* (clients and also internal subjects; renovations and also finances).
+- **Then show the shapes from the original author's files** and ask which the user recognises. Two are shipped in `templates/`, generalised from pages that have been in daily use for months:
+  - `templates/matter-page.md`: one client, deal, case, engagement, or other ongoing thing with people and a timeline. Sections: how this file is organised, people, backstory, major milestones, current status, full history, sources.
+  - `templates/domain-page.md`: a subject rather than a matter, with no cast and no chronology. Sections: how this file is organised, where it stands, positions, dynamics and reads, open questions, index, sources.
+  - `templates/project-wiki.md`: a thing with a start and an end, whose page mirrors the project's own folders.
+  - `templates/wiki-hub.md`: the short always-on page for an area, two or three sentences per subject with a link.
+- **Agree the shape or shapes before moving on.** One kind of work usually means one template plus the hub. Several kinds mean a template per kind, named for the kind ("account page," "case page," "property page"), each adapted from a shipped one by renaming or dropping sections. Write the agreed shapes into `customization.md` under Pages; they become that layer's rules file's template section. Do not invent a third structure during setup; adapt a shipped one, and let use show what is missing.
+
+### 4. The folders (layers) and what is in them
+For each area from step 1: what the folder is called, one line on what it holds, and who sees it. Then its subjects (spokes), shaped by step 3: if every page is a client account, the subjects are the accounts plus a few internal ones; if the work is a household, the subjects are home, money, health, school, and so on. Five to ten short names, or propose them from the existing tree. Ask which subjects already have a body of files and which are empty for now (empty spokes get a stub `wiki.md` and nothing else). Then two small settings: hub word cap *(default: 800 to 1200 words)* and whether pages carry status tags (Settled, Open) or say their uncertainty in prose *(default: prose only)*.
+
+### 5. Privacy
 - Now that the folders are named: what must never leave the machine or be copied from one folder to another? Client names, money, health, family, anything candid about people? Name the things. *(This becomes each folder's privacy rule.)*
 - Which folder may read which? *(The rule: a private folder may read a shared one; a shared folder never reads a private one.)*
 - Tell the user where their content already goes: the sync provider from step 2 and the LLM vendor that sees whatever a session shows it. wikiOS adds no destination beyond those. Ask whether that is acceptable for the most sensitive thing they named.
-
-### 5. Pages
-- One shape for every page, or two? *(Default: one until the need appears.)* Do not describe the shapes; show them. Paste these two skeletons and ask which the user recognises from their own work:
-
-  A **matter page** (one client, deal, case, or ongoing matter):
-  ```
-  # Acme Co.
-  ## How this file is organised      one or two lines
-  ## People                          who is who, in this matter
-  ## Backstory                       why this started; what was asked for
-  ## Major milestones                the spine, eight to ten lines at most
-  ## Current status                  where it stands right now; rewritten in place
-  ## Full history                    one dated entry per event, newest first
-  ## Sources
-  ```
-  A **domain page** (a subject, not a matter):
-  ```
-  # Pricing
-  ## How this file is organised
-  ## Where it stands
-  ## Positions                       what the owner has actually decided
-  ## Dynamics and reads              the candid read; nothing here is a commitment
-  ## Open questions
-  ## Index                           the files this subject owns
-  ## Sources
-  ```
-  A hub page is shorter: what this area is, and two or three sentences per subject with a link. `templates/wiki-hub.md` is a finished one.
-- Hub word cap? *(Default: 800 to 1200 words.)* Status tags on pages (Settled, Open), or uncertainty in prose only? *(Default: prose only.)*
 
 ### 6. Projects
 - Do you run things with a start and an end (a build, a renovation, a case, a book)? *(Default: yes.)*
@@ -130,7 +113,7 @@ Tell the user, in these words or close to them: *Every conversation ends with a 
 
 ## Part C. What to build
 
-1. `.system/` with `LLM-rules.md`, `wiki-os.md`, and `githubsync.md` copied from `system/` unchanged (record each `schema_version` as the install's `upstream_version`); `customization.md` from `templates/customization.md` with every answer filled in; `customization/` holding one `<layer>-rules.md` per layer (from `system/layer-rules-template.md`, differences filled), `project-rules.md` (from `system/project-rules.md`, folder names and tags filled), `LLM-rules-origins.md` (blank template), `writing-style.md` if that module is on, `templates/` (the hub and project page templates), empty `howtos/` and `tools/`, `snapshots/<layer>/`, `state/`, `history/`.
+1. `.system/` with `LLM-rules.md`, `wiki-os.md`, and `githubsync.md` copied from `system/` unchanged (record each `schema_version` as the install's `upstream_version`); `customization.md` from `templates/customization.md` with every answer filled in; `customization/` holding one `<layer>-rules.md` per layer (from `system/layer-rules-template.md`, differences filled), `project-rules.md` (from `system/project-rules.md`, folder names and tags filled), `LLM-rules-origins.md` (blank template), `writing-style.md` if that module is on, `templates/` (the hub, matter, domain, and project page templates, adapted as agreed in step 3), empty `howtos/` and `tools/`, `snapshots/<layer>/`, `state/`, `history/`.
 2. The root entry file from `templates/CLAUDE-root.md` with the import line, and one entry file per layer from `templates/CLAUDE-layer.md`, each stating the layer's privacy rule.
 3. Per layer: a hub `wiki.md` (`status: draft`, seeded from the interview, under the word cap), spoke folders with stub `wiki.md` files, `log.md` from `templates/log.md`, and `Logs/`.
 4. The project folder template if projects are on, with its `.canvas/` (`schema.md` copied from `customization/project-rules.md`, `CLAUDE.md` from `templates/CLAUDE-project.md`, empty `log.md`, `inbox/`, `raw/`, `snapshots/`, `templates/`).

@@ -2,6 +2,9 @@
 
 One entry per `schema_version` bump of any `system/` file, newest first. (Template-only changes are also recorded here, marked as such — templates carry no `schema_version`.)
 
+## 2026-09-07 (later) — SETUP round 3 asks what the user is working on; matter and domain page templates shipped
+- The interview's third round now asks what the person actually works on and settles the page shape or shapes before any folder or subject is named, because pages added before a shape is agreed come in disjointed. It shows the shipped shapes rather than describing them. **New `templates/matter-page.md` and `templates/domain-page.md`**, generalised from the origin install's client and subject pages. Hub template's cap and rules pointer updated.
+
 *Git history begins 2026-09-07. The repo was rebuilt from a clean tree that day so that no install-specific material survives in past commits; this changelog is the record of what came before.*
 
 ## 2026-09-07 — the system is named **wikiOS** (owner, 2026-09-07); SETUP.md rewritten as the door; repo CLAUDE.md; key files and engines in customization

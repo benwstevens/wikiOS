@@ -59,10 +59,10 @@ A **layer** is one top-level folder with its own privacy rule. Most people need 
 Ask in this order, two or three questions at a time, in plain language. Give a default for every question so the user can say "default." If the workspace already has files, look at the tree first and propose answers from it. Write each answer into `customization.md` as it lands.
 
 ### 1. What this is for
-- Work, personal life, or both? *(Default: one.)*
-- If both: do the two need a wall between them, so that a session in one never reads the other? *(Default: yes if anyone else will ever see the work side.)*
+- **Ask this first, in these words:** "Are you setting this up for a whole company, for your own projects at a company, for your personal life, or some combination?" The answer decides how many folders (layers) there will be and who else will ever open them. *(Default: one area.)*
+- If more than one area: should they be walled off from each other, so a session in one can never read the other? *(Default: yes if anyone else will ever see the work side.)*
 - Does anyone else run sessions in any part of it, or will any folder be shared with a team or a client? *(Default: no.)* A shared folder becomes a shared layer where nothing candid lives.
-- What should the install be called, and how should the owner be named in the files? *(First name is fine.)*
+- How should the files refer to you? *(First name is fine.)* The workspace itself is named after its folder unless the user wants something else; do not ask them to name "the install," which means nothing to a newcomer.
 
 ### 2. Privacy
 - What must never leave the machine or be copied between folders? Client names, money, health, family, anything candid about people? Name it. *(This becomes each layer's privacy rule.)*

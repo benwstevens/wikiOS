@@ -170,7 +170,7 @@ Tell the user, in these words or close to them: *"Here's how we stay up to date.
 | `system/layer-rules-template.md` | Template for one layer's filing rules (a human-owned hub-and-spoke layer). Installs copy it once per layer into `.system/customization/<layer>-rules.md`. Formerly `hub-schema.md`. |
 | `system/project-rules.md` | The contract for the automated per-project wikis; each project carries a copy in its `.canvas/schema.md`. Formerly `project-schema.md`. |
 | `templates/` | Starter files: root and layer `CLAUDE.md`, optional global `CLAUDE.md`, `customization.md`, `LLM-rules-origins.md`, `writing-style.md`, project `CLAUDE.md`, and the page shapes: hub, matter page, domain page, project wiki, capture log, plain-language explainer. |
-| `README.md` | This file: the person's introduction, the model's setup instructions and interview, and these maintainer notes. `SETUP.md` is a pointer here. |
+| `README.md` | This file: the person's introduction, the model's setup instructions and interview, and these maintainer notes. |
 | `system/githubsync.md` | Rule files only, never wiki content. The two passes: "port the system upstream" (install → repo) and "sync with upstream" (repo → install). Folder to folder: the install's `.system/` root against `system/`. Installs carry a copy at `.system/githubsync.md`. |
 | `CHANGELOG.md` | One entry per `schema_version` bump of any `system/` file. |
 

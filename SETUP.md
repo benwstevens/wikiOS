@@ -1,14 +1,16 @@
 # wikiOS — SETUP: point your LLM at this folder
 
+## For the person
+
+*This section is for you. Everything after the next heading is instructions to the AI, and you never need to read it.*
+
 **Before anything else: what you need.** wikiOS works with an AI tool that runs on your computer and can read and write files in a folder. Today that means Claude Code or Cursor, or a similar tool. If you use ChatGPT or Claude in a web browser, it cannot reach your folders, so this is not for you yet. It also needs a folder where your actual work lives (your documents, notes, and projects), which is a different folder from this one. Cost: the tool's own subscription; wikiOS adds no fee. It runs only when you talk to it, so there is no background usage. To remove it later, delete the `.system/` folder and the few `wiki.md`, `log.md`, and `CLAUDE.md` files it added; your own files are untouched.
 
 **Why bother.** An LLM forgets everything between conversations, and what it does remember it keeps somewhere you cannot see. wikiOS gives it a memory you own: a set of ordinary text files, in your own folders, that it reads at the start of every session and maintains as you work. So the model shows up already knowing your clients, your projects, your decisions, and how you like things done. Every fact on every page says where it came from and when, so you can check it. Every change is copied first, so you can undo it. And because it is all plain text, you can open any page yourself, read it, fix it, or search it, with or without the model.
 
-**What a "wiki" is in wikiOS.** Just a text file. Each page is a file ending in `.md`, written in **markdown**, which is ordinary text with a few light conventions: a line starting with `#` is a heading, a line starting with `-` is a bullet, `**bold**` is bold, and a link is `[words](path/to/file.md)`. That is nearly all of it, and you do not have to learn it, because the model writes the pages; you read them. They open in anything that opens text: Notepad or TextEdit, Word, your phone's notes app. If you want them to look nice, free editors made for markdown show the headings and links formatted: **Obsidian** and **Typora** are the common ones on Mac and Windows, **iA Writer** on Mac and iPhone, and VS Code if you already have it. None of this is programming. It is the same kind of file a README on a website is.
+**Two things to know before you start.** First, every rule in wikiOS is a rule the AI reads and follows; none of it is a lock. What keeps you safe is that every fact it writes names its source, so you can check it; it copies every page before changing it, so you can undo it; and every session leaves a log, so you can trace it. Second, the wiki is not an inventory of your files. Many of your files are drafts, duplicates, or noise, and the AI does not summarise them all. A page holds the decisions and facts you have vetted, and a file earns a line only when it carries one.
 
-**If you are the person:** download or clone this folder, open your LLM tool (Claude Code, Cursor, or similar) inside it, and say "set up wikiOS." The model reads this file and asks you what it needs. (In Claude Code the `/setup-wiki` command does the same, but only while you are in this folder; it is a project skill, not something installed on your machine.) Budget an hour for the conversation and a few days of ordinary use before wikiOS feels like yours.
-
-**If you are the model:** read this whole file, then `system/LLM-rules.md` and `system/wiki-os.md`. Then run the interview in Part B, a few questions at a time, writing the answers into the user's `customization.md` as you go so nothing is lost if the session ends. Then build what Part C describes. Do not skip questions because you can guess the answers; the point of the interview is that the user hears the choices. One exception to `LLM-rules.md` during the interview: skip the **Requests** recap at the end of each round. The round *is* the questions; repeating them underneath is noise. The recap rule applies again once the system is built.
+**What happens next.** Download or clone this folder, open your LLM tool (Claude Code, Cursor, or similar) inside it, and say "set up wikiOS." The model reads this file and asks you what it needs. (In Claude Code the `/setup-wiki` command does the same, but only while you are in this folder; it is a project skill, not something installed on your machine.) Budget an hour for the conversation and a few days of ordinary use before wikiOS feels like yours. The AI will ask you about ten short rounds of questions, two or three at a time, and read everything back before it builds. Pages are ordinary text files; if you have never met markdown, the note at the very end of this file explains it in a paragraph.
 
 ## Where this comes from
 
@@ -18,41 +20,17 @@ wikiOS's shared files are versioned here. The core rules file is named `wiki-os.
 
 ---
 
+## For the model
+
+**If you are the model:** everything from here to the vocabulary at the end is addressed to you. Read this whole file, then `system/LLM-rules.md` and `system/wiki-os.md`. Then run the interview in Part B, a few questions at a time, writing the answers into the user's `customization.md` as you go so nothing is lost if the session ends. Then build what Part C describes. Do not skip questions because you can guess the answers; the point of the interview is that the user hears the choices. One exception to `LLM-rules.md` during the interview: skip the **Requests** recap at the end of each round. The round *is* the questions; repeating them underneath is noise. The recap rule applies again once the system is built.
+
 ## Part A. What wikiOS is
 
 **In plain words.** A folder of ordinary markdown pages that your LLM maintains under written rules. There is one always-on hub page per area of your life or work, pointing to subject pages that are read only when needed. Every claim on a page names the dated source it came from. Before the model changes any page it saves a dated copy. Facts and notes it writes directly; positions, contradictions, and anything on a hub page it proposes and waits for your yes. Every working session ends with a short log. Meeting notes and stray thoughts have a place to land. **The wiki is not an inventory.** It does not summarise every file in the folders; many files are drafts, duplicates, or noise. A page holds vetted decisions and facts, each traceable to its source, and a file earns a line in the wiki only when it carries one of those. Keeping the pages small and true is the whole point, and it is why the model proposes rather than ingests wholesale. And one command, **"update the wikis"**, re-reads everything since last time, proposes what the pages should say, and checks them for contradictions. Nothing runs on a timer.
 
 **Be honest with the user about one thing.** Every control in wikiOS is a rule the model reads and follows. None of it is a lock. The safety comes from three things that do not depend on the model's obedience in the moment: the sources it must cite (so anything can be checked), the snapshots it must take (so anything can be undone), and the session logs (so anything can be traced). Say this plainly during setup; people responsible for someone else's data will ask.
 
-**The layout.** Everything about wikiOS lives in one folder at the root of the user's workspace:
-
-```
-<workspace root>/
-  CLAUDE.md               the entry file the tool loads every session; one line imports LLM-rules.md
-  .system/
-    LLM-rules.md          how the model behaves with the owner (shared with this repo, identical)
-    wiki-os.md            how the wikis operate (shared with this repo, identical)
-    githubsync.md         how rule files move to and from this repo (never content)
-    customization.md      THIS install: layers, walls, folders, key files, engines, tool, modules, versions
-    customization/        everything specific to this install
-      <layer>-rules.md      one per layer
-      project-rules.md      the contract for project wikis (copied into each project's .canvas/)
-      LLM-rules-origins.md  the dated story behind each behaviour rule
-      writing-style.md      the owner's voice guide (optional)
-      templates/  howtos/  tools/
-    snapshots/<layer>/    the undo trail
-    state/                the timestamp of the last "update the wikis"
-    history/              decision records and, in history/Logs/, system-level session logs
-  <Layer folder>/         one per layer: CLAUDE.md, wiki.md (the hub), log.md (a buffer), Logs/
-    <Spoke folder>/       one per subject: wiki.md and the files it covers
-    Projects/ ...         if the layer runs projects; each project has its own hidden .canvas/ folder
-```
-
-A **layer** is one top-level folder with its own privacy rule. Most people need one. Someone with work and private life in the same workspace needs two with a wall between them. Ben has three: a private firm folder, a shareable firm folder, and a household folder.
-
-**How the entry file works.** Claude Code loads `CLAUDE.md` from the working directory and every folder above it, and a line reading `@.system/LLM-rules.md` pulls that file in at launch. So the behaviour rules are active from the first message. Cursor reads `.cursorrules` or `AGENTS.md`; other tools have their own. If the user's tool has no import, paste the rules file's body into the entry file and note in `customization.md` that the two must be kept in step.
-
-**What a page looks like.** Frontmatter (a block of `field: value` lines between `---` markers: title, description, type, status, dates, tags), then the body in plain sentences with headings, then a `## Sources` section at the bottom with one bullet per dated source. Links are ordinary markdown links to other files by relative path. `templates/wiki-hub.md`, `templates/matter-page.md`, `templates/domain-page.md`, and `templates/project-wiki.md` are finished examples.
+A **layer** is one top-level folder with its own privacy rule. Most people need one. Someone with work and private life in the same workspace needs two with a wall between them. The origin install has three: a private firm folder, a shareable firm folder, and a household folder.
 
 ---
 
@@ -122,6 +100,34 @@ Tell the user, in these words or close to them: *"Here's how we stay up to date.
 
 ## Part C. What to build
 
+**The layout.** Everything about wikiOS lives in one folder at the root of the user's workspace:
+
+```
+<workspace root>/
+  CLAUDE.md               the entry file the tool loads every session; one line imports LLM-rules.md
+  .system/
+    LLM-rules.md          how the model behaves with the owner (shared with this repo, identical)
+    wiki-os.md            how the wikis operate (shared with this repo, identical)
+    githubsync.md         how rule files move to and from this repo (never content)
+    customization.md      THIS install: layers, walls, folders, key files, engines, tool, modules, versions
+    customization/        everything specific to this install
+      <layer>-rules.md      one per layer
+      project-rules.md      the contract for project wikis (copied into each project's .canvas/)
+      LLM-rules-origins.md  the dated story behind each behaviour rule
+      writing-style.md      the owner's voice guide (optional)
+      templates/  howtos/  tools/
+    snapshots/<layer>/    the undo trail
+    state/                the timestamp of the last "update the wikis"
+    history/              decision records and, in history/Logs/, system-level session logs
+  <Layer folder>/         one per layer: CLAUDE.md, wiki.md (the hub), log.md (a buffer), Logs/
+    <Spoke folder>/       one per subject: wiki.md and the files it covers
+    Projects/ ...         if the layer runs projects; each project has its own hidden .canvas/ folder
+```
+
+**How the entry file works.** Claude Code loads `CLAUDE.md` from the working directory and every folder above it, and a line reading `@.system/LLM-rules.md` pulls that file in at launch. So the behaviour rules are active from the first message. Cursor reads `.cursorrules` or `AGENTS.md`; other tools have their own. If the user's tool has no import, paste the rules file's body into the entry file and note in `customization.md` that the two must be kept in step.
+
+**What a page looks like.** Frontmatter (a block of `field: value` lines between `---` markers: title, description, type, status, dates, tags), then the body in plain sentences with headings, then a `## Sources` section at the bottom with one bullet per dated source. Links are ordinary markdown links to other files by relative path. `templates/wiki-hub.md`, `templates/matter-page.md`, `templates/domain-page.md`, and `templates/project-wiki.md` are finished examples.
+
 1. `.system/` in the user's work folder (the repo's `system/` folder is the source; the install's copy is the hidden `.system/`). Into it: `LLM-rules.md`, `wiki-os.md`, and `githubsync.md` copied unchanged (record each `schema_version` as the install's `upstream_version`); `customization.md` from `templates/customization.md` with every answer filled in; and the folder `customization/` holding one `<layer>-rules.md` per layer (from `system/layer-rules-template.md`, differences filled), `project-rules.md` (from `system/project-rules.md`, folder names and tags filled), `LLM-rules-origins.md` (blank template), `writing-style.md` if that module is on, `templates/` (the hub, matter, domain, and project page templates, adapted as agreed in step 3; project layout from step 4), and empty `howtos/` and `tools/`. Beside `customization/`, not inside it: `snapshots/<layer>/`, `state/`, and `history/` with a `Logs/` folder in it.
 2. The root entry file from `templates/CLAUDE-root.md` with the import line, and one entry file per layer from `templates/CLAUDE-layer.md`, each stating the layer's privacy rule.
 3. Per layer: a hub `wiki.md` (`status: draft`, seeded from the interview, under the word cap), spoke folders with stub `wiki.md` files, `log.md` from `templates/log.md`, and `Logs/`.
@@ -138,3 +144,8 @@ Tell the user, in these words or close to them: *"Here's how we stay up to date.
 ## Vocabulary, for the person reading over the model's shoulder
 
 **Layer:** one top-level folder with its own privacy rule. **Hub:** a layer's always-on `wiki.md`. **Spoke:** a subject folder with its own `wiki.md`. **Matter page:** the page about one client, deal, case, or ongoing matter. **Project:** a folder with a start and an end that carries its own copy of the project rules. **Ingest:** read a folder's new files and propose what the wiki should say about them. **Snapshot:** a dated copy of a page taken before it is changed. **Lint:** a check for contradictions, stale sections, and broken links. **Frontmatter:** the `field: value` block at the top of a file. **Tier 1 / Tier 2:** written directly / asked about first. **Engine:** a repeatable multi-step job with its own folder and written steps. **Key file:** a document the model must read before a named kind of task. **§:** section; "wiki-os §6" is section 6 of `wiki-os.md`.
+
+## A note on markdown, for whoever wants it
+
+**What a "wiki" page is.** Just a text file. Each page is a file ending in `.md`, written in **markdown**, which is ordinary text with a few light conventions: a line starting with `#` is a heading, a line starting with `-` is a bullet, `**bold**` is bold, and a link is `[words](path/to/file.md)`. That is nearly all of it, and you do not have to learn it, because the model writes the pages; you read them. They open in anything that opens text: Notepad or TextEdit, Word, your phone's notes app. If you want them to look nice, free editors made for markdown show the headings and links formatted: **Obsidian** and **Typora** are the common ones on Mac and Windows, **iA Writer** on Mac and iPhone, and VS Code if you already have it. None of this is programming. It is the same kind of file a README on a website is.
+

@@ -81,8 +81,17 @@ This is the round that decides whether the wiki holds together. Explain before a
   - `templates/wiki-hub.md`: the short always-on page for an area, two or three sentences per subject with a link.
 - **Agree the shape or shapes before moving on.** One kind of work usually means one template plus the hub. Several kinds mean a template per kind, named for the kind ("account page," "case page," "property page"), each adapted from a shipped one by renaming or dropping sections. Write the agreed shapes into `customization.md` under Pages; they become that layer's rules file's template section. Do not invent a third structure during setup; adapt a shipped one, and let use show what is missing.
 
-### 4. The folders (layers) and what is in them
-For each area from step 1: what the folder is called, one line on what it holds, and who sees it. Then its subjects (spokes), shaped by step 3: if every page is a client account, the subjects are the accounts plus a few internal ones; if the work is a household, the subjects are home, money, health, school, and so on. Five to ten short names, or propose them from the existing tree. Ask which subjects already have a body of files and which are empty for now (empty spokes get a stub `wiki.md` and nothing else). Then two small settings: hub word cap *(default: 800 to 1200 words)* and whether pages carry status tags (Settled, Open) or say their uncertainty in prose *(default: prose only)*.
+### 4. Your existing folders, and how wikiOS lays over them
+Assume the person already has a folder tree. Do not ask them to name folders; **read the tree and propose.** The folder they gave in step 2 is the workspace. List its folders two or three levels deep (folders only, no files, skip anything that is obviously photos, downloads, archives, or application data) and show the user a short map. Then propose, and let them edit:
+
+- **Which existing folder is each area from step 1.** For one area, the workspace itself is the layer. For work and personal side by side, point at the two folders that already hold them; if they are mixed together in one folder, say so and ask whether to separate them now or leave the wall for later.
+- **Which existing folders become the subjects (spokes)** under each area, shaped by step 3: if every page is a client account, the client folders are the subjects, plus whatever internal folders exist (pricing, hiring, finances); if it is a household, the folders for home, money, health, school. Five to ten. Folders that do not fit any subject are left alone and simply not wikied; folders that are archives are named as such so the refresh skips them.
+- **Which subjects already have real material** (the model can see this) and which are empty; empty ones get a placeholder page and nothing else.
+- **Nothing moves.** wikiOS adds a `wiki.md` to the folders that become subjects and a hub `wiki.md`, `log.md`, and `Logs/` at each layer's root. It does not rename or reorganise the user's folders. If the user wants to reorganise, that is a separate job for later, planned first (wiki-os §3).
+
+Only if the workspace is empty: propose the subjects from the answers in step 3 and create the folders.
+
+Two small settings while here: hub word cap *(default: 800 to 1200 words)*, and whether pages carry status tags (Settled, Open) or say their uncertainty in prose *(default: prose only)*.
 
 ### 5. Privacy
 - Now that the folders are named: what must never leave the machine or be copied from one folder to another? Client names, money, health, family, anything candid about people? Name the things. *(This becomes each folder's privacy rule.)*

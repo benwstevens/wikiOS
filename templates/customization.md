@@ -15,7 +15,7 @@ Root files in `.system/` (`LLM-rules.md`, `wiki-os.md`) carry the same rules as 
 ## The install
 - **Owner:** <name>. **Root:** <path>. **Tool:** <Claude Code / other>; the root entry file imports `LLM-rules.md`.
 - **Names and titles to get exactly right:** <list>.
-- **Upstream:** the `canvas-wiki-system` repo. Sync is a deliberate pass, never automatic (`.system/githubsync.md`; rule files only).
+- **Upstream:** the `wikiOS` repo. Sync is a deliberate pass, never automatic (`.system/githubsync.md`; rule files only).
 
 ## Layers and privacy walls
 | Layer | Folder | What it holds | Rules file | Wall |

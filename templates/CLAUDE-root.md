@@ -16,4 +16,4 @@ This workspace is <owner>'s <install name>, kept as LLM-maintained wikis. The sy
 
 **To answer a question:** find the relevant hub `wiki.md`, then the spoke, and answer with citations (wiki-os §7). A read-only question skips the rule ceremony. **To work on a project:** read its `.canvas/schema.md` first. **At the end of a session:** write a session log (wiki-os §4). **At the start of one:** if any `.system/state/*.last_update` marker is older than fourteen days, say so in one line and offer "update the wikis"; never run it unasked (wiki-os §8).
 
-**The system's upstream** is the `canvas-wiki-system` repo; say "sync with upstream" to adopt improvements (`.system/githubsync.md`; rule files only, never wiki content). **How the system got this shape:** `.system/history/`.
+**The system's upstream** is the `wikiOS` repo; say "sync with upstream" to adopt improvements (`.system/githubsync.md`; rule files only, never wiki content). **How the system got this shape:** `.system/history/`.

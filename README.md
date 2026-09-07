@@ -4,7 +4,7 @@ An LLM-maintained wiki system for keeping durable, auditable knowledge in plain 
 
 ## For the person
 
-*This section is for you. Everything from "For the model" onward is instructions to the AI, and you never need to read it. The last section, "For maintainers," is about the repo itself.*
+*This section is for you. Everything from "For the model" onward is instructions for your AI service, advising it on how to help you set up the system. The last section, "For maintainers," is about the repo itself.*
 
 **Before anything else: what you need.** wikiOS works with an AI tool that runs on your computer and can read and write files in a folder. Today that means Claude Code or Cursor, or a similar tool. If you use ChatGPT or Claude in a web browser, it cannot reach your folders, so this is not for you yet. It also needs a folder where your actual work lives (your documents, notes, and projects), which is a different folder from this one. Cost: the tool's own subscription; wikiOS adds no fee. It runs only when you talk to it, so there is no background usage. To remove it later, delete the `.system/` folder and the few `wiki.md`, `log.md`, and `CLAUDE.md` files it added; your own files are untouched.
 

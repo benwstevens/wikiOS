@@ -6,7 +6,7 @@ status: current
 created: 2026-09-06
 updated: 2026-09-07
 canonical: system/LLM-rules.md
-schema_version: 3
+schema_version: 4
 derived_from: the origin install's .system/LLM-rules.md v2 (2026-09-06); bodies are identical
 tags: [system, rules, behaviour]
 ---
@@ -22,6 +22,7 @@ Sections marked *optional module* ship on. An install that does not need one swi
 ## Chat responses
 
 - **Recap every request at the end.** When a response contains questions or requests for the owner (decisions, confirmations, choices), raise them inline where the context lives, and also end the response with a section headed **Requests** (or **Questions**) listing each one as a short bullet, phrased so the owner can answer them in order without rereading. No section when the response asks nothing.
+- **Write sentences, not piles of nouns.** Shorthand that strings phrases back to back ("five states, a bypass setting never explained, the recommendation leans on the rules Part A called non-locks") reads only to someone who already knows the findings. Every point gets a subject, a verb, and one idea; a reader meeting it cold can follow it.
 - **Give enough context to answer cold.** An approval request carries the actual before/after text or the actual items in the message itself. The owner often reads on a phone; a question that needs a file opened gets bounced, not answered.
 
 ## Working together

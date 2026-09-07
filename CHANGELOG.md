@@ -2,6 +2,10 @@
 
 One entry per `schema_version` bump of any `system/` file, newest first. (Template-only changes are also recorded here, marked as such — templates carry no `schema_version`.)
 
+## 2026-09-07 (later) — LLM-rules v4: write sentences, not piles of nouns; SETUP.md after focus group run 2
+- **New rule under Chat responses: write sentences, not piles of nouns.** **Origin:** the owner read a summary that strung findings together as noun phrases with no verbs and ruled it "the type of prose which is not allowed... just phrases back to back." **Why it generalizes:** the model produces this shorthand whenever it compresses a list of findings, and only a reader who already knows the findings can parse it.
+- **SETUP.md** after a second simulated newcomer panel: a requirements paragraph first (a tool that runs on the computer and reads folders; not ChatGPT in a browser; cost; how to remove it); round 2 confirms the tool the model can already see and asks for the folder where the work lives, promising to merge rather than overwrite any existing `CLAUDE.md`; the permission-mode advice no longer leans on the non-lock rules and warns off the bypass setting; round 1's options include a book, a course, a research topic, a codebase; the wall question is asked once; the model does not look at folders before round 4 asks; round 5 gives the honest answer about folders the model can still read, with the strong fix (move it out) and the weak one (an ignore rule); round 7 primes with examples; several path and count slips fixed.
+
 ## 2026-09-07 (later) — SETUP round 3 asks what the user is working on; matter and domain page templates shipped
 - The interview's third round now asks what the person actually works on and settles the page shape or shapes before any folder or subject is named, because pages added before a shape is agreed come in disjointed. It shows the shipped shapes rather than describing them. **New `templates/matter-page.md` and `templates/domain-page.md`**, generalised from the origin install's client and subject pages. Hub template's cap and rules pointer updated.
 

@@ -94,10 +94,9 @@ Only if the workspace is empty: propose the subjects from the answers in step 3 
 Two small settings while here: hub word cap *(default: 800 to 1200 words)*, and whether pages carry status tags (Settled, Open) or say their uncertainty in prose *(default: prose only)*.
 
 ### 5. Privacy
-Keep this round short; three plain questions.
-- "What must never leave this machine or be copied between your folders? Name the actual things." *(Becomes each folder's privacy rule.)*
-- If more than one area: "Which folder may read which?" *(A private folder may read a shared one, never the reverse.)*
-- "Your files already go to <sync provider> and to the AI vendor. wikiOS adds nothing beyond those. Fine for the most sensitive thing you named?" If not, that thing lives in a folder wikiOS does not touch.
+Two plain questions.
+- "Is there a wall between anything in your folders that the wikis must never let cross-pollinate? For example personal versus company material, or HR files versus what employees may see, or one client versus another. If so, point those things out." *(Each wall becomes a privacy rule in the folders on either side of it, and decides which folder may read which: the private side may read the shared side, never the reverse.)*
+- "Is there anything you never want the AI to see at all? If so, we leave it in a folder wikiOS does not set up." *(Say plainly, if asked, that the AI vendor sees whatever a session shows it, and the sync provider already holds the files; wikiOS adds no other destination.)*
 
 ### 6. Projects
 - Do you run things with a start and an end (a build, a renovation, a case, a book)? *(Default: yes.)*

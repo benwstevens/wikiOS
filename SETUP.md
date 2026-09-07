@@ -89,6 +89,8 @@ Assume the person already has a folder tree. Do not ask them to name folders; **
 - **Which subjects already have real material** (the model can see this) and which are empty; empty ones get a placeholder page and nothing else.
 - **Nothing moves.** wikiOS adds a `wiki.md` to the folders that become subjects and a hub `wiki.md`, `log.md`, and `Logs/` at each layer's root. It does not rename or reorganise the user's folders. If the user wants to reorganise, that is a separate job for later, planned first (wiki-os §3).
 
+- **Projects, from the same scan.** If the tree shows things with a start and an end (a build, a case, a renovation, a book), say what pattern they already follow and propose it as the project layout: the stage folders they move through *(default if none exist: Planning, Active, Completed, plus an Archive the refresh skips)*, what one project folder contains *(default: Overview, Research, Options, Budget, Execution, Records)*, and the tag words for project entries *(show the shipped list; ask which words are wrong for this work)*. If there are no projects, say so and skip.
+
 Only if the workspace is empty: propose the subjects from the answers in step 3 and create the folders.
 
 Two small settings while here: hub word cap *(default: 800 to 1200 words)*, and whether pages carry status tags (Settled, Open) or say their uncertainty in prose *(default: prose only)*.
@@ -98,31 +100,27 @@ Two plain questions.
 - "Is there a wall between anything in your folders that the wikis must never let cross-pollinate? For example personal versus company material, or HR files versus what employees may see, or one client versus another. If so, point those things out." *(Each wall becomes a privacy rule in the folders on either side of it, and decides which folder may read which: the private side may read the shared side, never the reverse.)*
 - "Is there anything you never want the AI to see at all? If so, we leave it in a folder wikiOS does not set up." *(Say plainly, if asked, that the AI vendor sees whatever a session shows it, and the sync provider already holds the files; wikiOS adds no other destination.)*
 
-### 6. Projects
-- Do you run things with a start and an end (a build, a renovation, a case, a book)? *(Default: yes.)*
-- Stage folder names *(default: Planning, Active, Completed, plus an Archive the refresh skips)*; what a project folder contains *(default: Overview, Research, Options, Budget, Execution, Records)*; the tag list for project entries *(show the shipped list; ask which words are wrong for this work and what replaces them)*.
-
-### 7. Key files: what the model must read before certain tasks
+### 6. Key files: what the model must read before certain tasks
 Ask: "Are there documents you would want the model to read every time before it does a certain kind of work?" Examples from the origin install: a negotiation-principles file before any deal conversation; a legal style guide before drafting a contract; a voice guide before drafting anything under the owner's name; a how-to before touching a spreadsheet model. For each: the file, and the trigger ("before X, read Y"). These go into `customization.md` under **Key files**, and the model treats each as a standing instruction. If the user has none yet, leave the section with one example line so they know where it goes.
 
-### 8. Engines: processes you run again and again
+### 7. Engines: processes you run again and again
 Ask: "Is there a job you do repeatedly that has the same steps each time?" A research sweep across many sources, a reader panel on a draft, a comps pull, a weekly digest. Each becomes an **engine**: its own folder with a plain-language `workflow.md` (what it does, what can go wrong), a `plan.md`, its inputs and outputs, and a `Logs/` folder; the model runs it the same way each time and the outputs are never treated as canonical facts until a person has looked at them. Record the list in `customization.md` under **Engines**, even if it is empty. Do not build engines during setup; note them and build the first one when the user asks.
 
-### 9. How the model should behave
+### 8. How the model should behave
 Do not walk the whole of `LLM-rules.md`; it is on by default and corrections will refine it. Ask only these:
 - **The three optional modules.** Negotiation and deals (for anyone who negotiates or does contracts); writing in the owner's voice (for anyone who will have the model draft things they send); daily files and tools (for anyone with a task list the model helps run). Which stay on? Switched-off modules are recorded in `customization.md`; the shared file is never edited.
 - **The three rules people most often question,** read aloud: every answer that asks something ends with a **Requests** list; anything not yet decided is written as a proposal, never as a decision; the owner's files are never copied anywhere else. Any objection?
 - If the writing module stays on: start `customization/writing-style.md` from the template and explain the capture loop (after the owner sends something, record the model's draft, the owner's final, and the lesson).
 - **Meeting notes:** does the user record or dictate meetings? Which tool? Any known quirk (the origin install's recorder swaps speaker labels)? This goes into a how-to under `customization/howtos/` and is what "update the wikis" reads as its main inflow.
 
-### 10. The upkeep, explained once, then confirm
+### 9. The upkeep, explained once, then confirm
 Tell the user, in these words or close to them: *Every conversation ends with a short log in the nearest Logs folder. When something is decided in conversation, the model offers to write it to the wiki right then. Your meeting notes and any stray thoughts in `log.md` wait for the next refresh. Every week or two, whenever you like, you say "update the wikis": the model re-reads everything since last time, proposes what the pages should say, asks you at most seven questions, and ends by checking the pages for contradictions. If you go two weeks without one, it reminds you once. Nothing runs on its own.* Then read `customization.md` back in full, take corrections, and build.
 
 ---
 
 ## Part C. What to build
 
-1. `.system/` with `LLM-rules.md`, `wiki-os.md`, and `githubsync.md` copied from `system/` unchanged (record each `schema_version` as the install's `upstream_version`); `customization.md` from `templates/customization.md` with every answer filled in; `customization/` holding one `<layer>-rules.md` per layer (from `system/layer-rules-template.md`, differences filled), `project-rules.md` (from `system/project-rules.md`, folder names and tags filled), `LLM-rules-origins.md` (blank template), `writing-style.md` if that module is on, `templates/` (the hub, matter, domain, and project page templates, adapted as agreed in step 3), empty `howtos/` and `tools/`, `snapshots/<layer>/`, `state/`, `history/`.
+1. `.system/` with `LLM-rules.md`, `wiki-os.md`, and `githubsync.md` copied from `system/` unchanged (record each `schema_version` as the install's `upstream_version`); `customization.md` from `templates/customization.md` with every answer filled in; `customization/` holding one `<layer>-rules.md` per layer (from `system/layer-rules-template.md`, differences filled), `project-rules.md` (from `system/project-rules.md`, folder names and tags filled), `LLM-rules-origins.md` (blank template), `writing-style.md` if that module is on, `templates/` (the hub, matter, domain, and project page templates, adapted as agreed in step 3; project layout from step 4), empty `howtos/` and `tools/`, `snapshots/<layer>/`, `state/`, `history/`.
 2. The root entry file from `templates/CLAUDE-root.md` with the import line, and one entry file per layer from `templates/CLAUDE-layer.md`, each stating the layer's privacy rule.
 3. Per layer: a hub `wiki.md` (`status: draft`, seeded from the interview, under the word cap), spoke folders with stub `wiki.md` files, `log.md` from `templates/log.md`, and `Logs/`.
 4. The project folder template if projects are on, with its `.canvas/` (`schema.md` copied from `customization/project-rules.md`, `CLAUDE.md` from `templates/CLAUDE-project.md`, empty `log.md`, `inbox/`, `raw/`, `snapshots/`, `templates/`).

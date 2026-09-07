@@ -2,7 +2,7 @@
 
 An LLM-maintained wiki system for keeping durable, auditable knowledge in plain markdown. The system is **wikiOS**; its core rules file is `wiki-os.md`. Built by **Ben Stevens** (benwstevens.com) as an evolution of Andrej Karpathy's LLM-wiki idea and refined through daily use across a firm, its clients and negotiations, its projects, and a household. This repo is the versioned upstream: the shared rule files and blank templates, no content.
 
-**To install: point your LLM at this folder and say "set up wikiOS."** It reads `SETUP.md` and asks you what it needs. Claude Code users can also type `/setup-wiki`.
+**To install: download or clone this folder, open your LLM tool inside it, and say "set up wikiOS."** It reads `SETUP.md` and asks you what it needs. In Claude Code, opened in this folder, `/setup-wiki` does the same (the command lives in this folder's `.claude/skills/`, so it exists only here, not everywhere on your machine). Claude Code will ask you to trust the folder the first time, and will ask before writing into your own workspace unless you pick a permissive mode; both are expected.
 
 ## The idea in five lines
 1. **Memory lives in files, not in the model.** Everything is markdown a human can open, audit, and fix. The files win over prior knowledge.

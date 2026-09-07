@@ -62,40 +62,66 @@ Ask in this order, two or three questions at a time, in plain language. Give a d
 - **Ask this first, in these words:** "Are you setting this up for a whole company, for your own projects at a company, for your personal life, or some combination?" The answer decides how many folders (layers) there will be and who else will ever open them. *(Default: one area.)*
 - If more than one area: should they be walled off from each other, so a session in one can never read the other? *(Default: yes if anyone else will ever see the work side.)*
 - Does anyone else run sessions in any part of it, or will any folder be shared with a team or a client? *(Default: no.)* A shared folder becomes a shared layer where nothing candid lives.
-- How should the files refer to you? *(First name is fine.)* The workspace itself is named after its folder unless the user wants something else; do not ask them to name "the install," which means nothing to a newcomer.
+- How should the files refer to you? *(First name is fine.)* The workspace is named after its folder unless the user wants something else; do not ask them to name "the install," which means nothing to a newcomer.
 
-### 2. Privacy
-- What must never leave the machine or be copied between folders? Client names, money, health, family, anything candid about people? Name it. *(This becomes each layer's privacy rule.)*
-- Which layer may read which? *(The rule: a private layer may read a shared one; a shared layer never reads a private one.)*
-- Tell the user where their content already goes: the sync provider their folders sit in (Dropbox, iCloud, OneDrive, Google Drive) and the LLM vendor that sees whatever a session shows it. wikiOS adds no destination beyond those. Ask whether that is acceptable for the most sensitive thing they named.
-
-### 3. The folders (layers) and what is in them
-For each layer: its name and folder, one line on what it holds, who sees it, and what it may read. Then its subjects (spokes): five to ten short names, or propose them from the existing tree. Ask which subjects already have a body of files and which are empty for now (empty spokes get a stub `wiki.md` and nothing else).
-
-### 4. Platform, sync, tool, and permission mode
-- Where do the files live: Dropbox, iCloud, OneDrive, Google Drive, or a plain local folder? Give the root path. If a sync provider is in use, tell the user to mark the workspace "available offline" so the model does not stall fetching files one by one.
+### 2. Platform, tool, and permission mode
+- Where do the files live: Dropbox, iCloud, OneDrive, Google Drive, or a plain local folder? Give the path to the top folder. If a sync provider is in use, tell the user to mark the workspace "available offline" so the model does not stall fetching files one by one.
 - Which tool runs the model: Claude Code, Cursor, something else? *(This decides the entry file and whether imports work.)*
-- **Permission mode.** Most tools have a setting for how much the model may do without asking. In Claude Code it is the Mode menu: *Auto* (the model handles permission decisions), *Manual* (always ask before making changes), *Accept edits* (file edits go through, other actions ask), *Plan* (plan before making changes), and a bypass setting. It makes a large difference to how fast the work goes. Recommend: **Accept edits or Auto for everyday wiki work inside the workspace**, because wikiOS's own rules already force snapshots and approval on the changes that matter; **Plan mode for any big job**, which is also what wiki-os §3 asks for; **Manual for the first week**, while the user learns what the model does. Record the choice; if the tool has no such setting, say so.
+- **Permission mode.** Most tools have a setting for how much the model may do without asking. In Claude Code it is the Mode menu: *Auto* (the model handles permission decisions), *Manual* (always ask before making changes), *Accept edits* (file edits go through, other actions ask), *Plan* (plan before making changes), and a bypass setting. It makes a large difference to how fast the work goes. Recommend: **Manual for the first week**, while the user learns what the model does; then **Accept edits or Auto for everyday wiki work inside the workspace**, because wikiOS's own rules already force snapshots and approval on the changes that matter; **Plan mode for any big job**, which is also what wiki-os §3 asks for. Record the choice; if the tool has no such setting, say so.
 - Will the model run outside this workspace too (other projects on the same machine)? If yes, offer `templates/CLAUDE-global.md` for the tool's global config so the Requests-recap and writing rules apply everywhere.
 
-### 5. Wikis, pages, and templates
-- One page template for everything, or different kinds of pages? *(Default: one.)* Show the two shipped shapes from `system/layer-rules-template.md`: a **matter page** (a client, deal, case, or ongoing matter: people, backstory, milestones, current status, full history, sources) and a **domain page** (a subject: where it stands, positions, dynamics and reads, open questions, index, sources). Let the user accept, rename, or drop them.
-- Hub word cap? *(Default: 800 to 1200 words.)* Status tags on pages, or uncertainty in prose only? *(Default: prose only.)*
+### 3. The folders (layers) and what is in them
+For each area from step 1: what the folder is called, one line on what it holds, and who sees it. Then its subjects (spokes): five to ten short names, or propose them from the existing tree. Ask which subjects already have a body of files and which are empty for now (empty spokes get a stub `wiki.md` and nothing else).
+
+### 4. Privacy
+- Now that the folders are named: what must never leave the machine or be copied from one folder to another? Client names, money, health, family, anything candid about people? Name the things. *(This becomes each folder's privacy rule.)*
+- Which folder may read which? *(The rule: a private folder may read a shared one; a shared folder never reads a private one.)*
+- Tell the user where their content already goes: the sync provider from step 2 and the LLM vendor that sees whatever a session shows it. wikiOS adds no destination beyond those. Ask whether that is acceptable for the most sensitive thing they named.
+
+### 5. Pages
+- One shape for every page, or two? *(Default: one until the need appears.)* Do not describe the shapes; show them. Paste these two skeletons and ask which the user recognises from their own work:
+
+  A **matter page** (one client, deal, case, or ongoing matter):
+  ```
+  # Acme Co.
+  ## How this file is organised      one or two lines
+  ## People                          who is who, in this matter
+  ## Backstory                       why this started; what was asked for
+  ## Major milestones                the spine, eight to ten lines at most
+  ## Current status                  where it stands right now; rewritten in place
+  ## Full history                    one dated entry per event, newest first
+  ## Sources
+  ```
+  A **domain page** (a subject, not a matter):
+  ```
+  # Pricing
+  ## How this file is organised
+  ## Where it stands
+  ## Positions                       what the owner has actually decided
+  ## Dynamics and reads              the candid read; nothing here is a commitment
+  ## Open questions
+  ## Index                           the files this subject owns
+  ## Sources
+  ```
+  A hub page is shorter: what this area is, and two or three sentences per subject with a link. `templates/wiki-hub.md` is a finished one.
+- Hub word cap? *(Default: 800 to 1200 words.)* Status tags on pages (Settled, Open), or uncertainty in prose only? *(Default: prose only.)*
 
 ### 6. Projects
-- Do you run discrete projects with a start and an end (a build, a renovation, a case, a book)? *(Default: yes.)*
-- Lifecycle folder names *(default: Planning, Active, Completed, plus an Archive that the refresh skips)*; what a project folder contains *(default: Overview, Research, Options, Budget, Execution, Records)*; the tag list for project entries *(offer the shipped list; let them replace terms)*.
+- Do you run things with a start and an end (a build, a renovation, a case, a book)? *(Default: yes.)*
+- Stage folder names *(default: Planning, Active, Completed, plus an Archive the refresh skips)*; what a project folder contains *(default: Overview, Research, Options, Budget, Execution, Records)*; the tag list for project entries *(show the shipped list; ask which words are wrong for this work and what replaces them)*.
 
 ### 7. Key files: what the model must read before certain tasks
-Ask: "Are there documents you would want the model to read every time before it does a certain kind of work?" Examples from the origin install: a negotiation-principles file read before any deal conversation; a legal style guide read before drafting a contract; a voice guide read before drafting anything under the owner's name; a how-to read before touching a spreadsheet model. For each: the file, and the trigger ("before X, read Y"). These go into `customization.md` under **Key files**, and the model treats each as a standing instruction. If the user has none yet, leave the section with one example line so they know where it goes.
+Ask: "Are there documents you would want the model to read every time before it does a certain kind of work?" Examples from the origin install: a negotiation-principles file before any deal conversation; a legal style guide before drafting a contract; a voice guide before drafting anything under the owner's name; a how-to before touching a spreadsheet model. For each: the file, and the trigger ("before X, read Y"). These go into `customization.md` under **Key files**, and the model treats each as a standing instruction. If the user has none yet, leave the section with one example line so they know where it goes.
 
 ### 8. Engines: processes you run again and again
 Ask: "Is there a job you do repeatedly that has the same steps each time?" A research sweep across many sources, a reader panel on a draft, a comps pull, a weekly digest. Each becomes an **engine**: its own folder with a plain-language `workflow.md` (what it does, what can go wrong), a `plan.md`, its inputs and outputs, and a `Logs/` folder; the model runs it the same way each time and the outputs are never treated as canonical facts until a person has looked at them. Record the list in `customization.md` under **Engines**, even if it is empty. Do not build engines during setup; note them and build the first one when the user asks.
 
 ### 9. How the model should behave
-- Walk `LLM-rules.md` one section at a time: chat responses (the Requests recap at the end of every answer that asks something), working together, provenance and evidence, and the three optional modules (negotiation and deals; writing in the owner's voice; daily files and tools). Everything is on by default. Ask which lines to switch off and which modules to keep. Switched-off items are recorded in `customization.md`; the shared file is never edited.
+Do not walk the whole of `LLM-rules.md`; it is on by default and corrections will refine it. Ask only these:
+- **The three optional modules.** Negotiation and deals (for anyone who negotiates or does contracts); writing in the owner's voice (for anyone who will have the model draft things they send); daily files and tools (for anyone with a task list the model helps run). Which stay on? Switched-off modules are recorded in `customization.md`; the shared file is never edited.
+- **The three rules people most often question,** read aloud: every answer that asks something ends with a **Requests** list; anything not yet decided is written as a proposal, never as a decision; the owner's files are never copied anywhere else. Any objection?
 - If the writing module stays on: start `customization/writing-style.md` from the template and explain the capture loop (after the owner sends something, record the model's draft, the owner's final, and the lesson).
-- Meeting notes: does the user record or dictate meetings? Which tool? Any known quirk (Ben's recorder swaps speaker labels)? This goes into a how-to under `customization/howtos/` and is what "update the wikis" reads as its main inflow.
+- **Meeting notes:** does the user record or dictate meetings? Which tool? Any known quirk (the origin install's recorder swaps speaker labels)? This goes into a how-to under `customization/howtos/` and is what "update the wikis" reads as its main inflow.
 
 ### 10. The upkeep, explained once, then confirm
 Tell the user, in these words or close to them: *Every conversation ends with a short log in the nearest Logs folder. When something is decided in conversation, the model offers to write it to the wiki right then. Your meeting notes and any stray thoughts in `log.md` wait for the next refresh. Every week or two, whenever you like, you say "update the wikis": the model re-reads everything since last time, proposes what the pages should say, asks you at most seven questions, and ends by checking the pages for contradictions. If you go two weeks without one, it reminds you once. Nothing runs on its own.* Then read `customization.md` back in full, take corrections, and build.
@@ -108,7 +134,7 @@ Tell the user, in these words or close to them: *Every conversation ends with a 
 2. The root entry file from `templates/CLAUDE-root.md` with the import line, and one entry file per layer from `templates/CLAUDE-layer.md`, each stating the layer's privacy rule.
 3. Per layer: a hub `wiki.md` (`status: draft`, seeded from the interview, under the word cap), spoke folders with stub `wiki.md` files, `log.md` from `templates/log.md`, and `Logs/`.
 4. The project folder template if projects are on, with its `.canvas/` (`schema.md` copied from `customization/project-rules.md`, `CLAUDE.md` from `templates/CLAUDE-project.md`, empty `log.md`, `inbox/`, `raw/`, `snapshots/`, `templates/`).
-5. `templates/CLAUDE-global.md` into the tool's global config, only if the user said yes in step 4.
+5. `templates/CLAUDE-global.md` into the tool's global config, only if the user said yes in step 2.
 6. A first session log in `.system/history/Logs/` recording the setup, with every decision and every default the user accepted.
 
 **First-run checklist, done with the user watching:** open a fresh session at the workspace root and confirm the entry file and `LLM-rules.md` loaded (in Claude Code, `/context` lists them under Memory files). Drop one test note in a layer's `log.md`. Add one test meeting note. If projects are on, create one test project from the template and put a document in it. Say **"update the wikis"** and confirm it reads the project, the note, and the buffer, proposes entries, and ends with a lint. End the session and confirm a log landed. Then delete the test material.

@@ -2,6 +2,9 @@
 
 One entry per `schema_version` bump of any `system/` file, newest first. (Template-only changes are also recorded here, marked as such — templates carry no `schema_version`.)
 
+## 2026-09-09 — LLM-rules v5: quote the line itself in any approval ask
+- **New rule under Chat responses: quote the line itself in any approval ask.** **Origin:** the model filed a new hub line and ended with "Veto or keep the new hub lead line?"; the owner had to go searching for what it referred to and asked for a rule that the position be restated verbatim. **Why it generalizes:** the existing "give enough context to answer cold" rule covers before/after text, but a model still tends to refer to a line by name in the closing recap; the fix is to quote the exact text inside the ask itself, every time, even when the message already showed it.
+
 ## 2026-09-07 (later) — SETUP.md and README.md merged into one README
 - The person's introduction from SETUP.md (requirements, why bother, the idea in five lines, rules-not-locks and not-an-inventory, what happens next, provenance) is now the top of `README.md`, because that is the page people hit first. The model's instructions and the interview follow under "For the model," and the old README's repo map, versioning notes, and "what this repo is not" sit at the end under "For maintainers." `SETUP.md` remains as a pointer. Repo `CLAUDE.md` and the setup skill now read `README.md`.
 

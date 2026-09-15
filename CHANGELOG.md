@@ -2,6 +2,9 @@
 
 One entry per `schema_version` bump of any `system/` file, newest first. (Template-only changes are also recorded here, marked as such — templates carry no `schema_version`.)
 
+## 2026-09-15 — README and customization template: the zsh `=` trap (no schema bump)
+- **README round 2 ("The tool") and `templates/customization.md` (Tool and permission mode)** now tell a Mac user to add `setopt NO_EQUALS` to `~/.zshrc`. **Origin:** in the origin install, compound read commands kept failing with `(eval):1: ==== not found`. zsh treats an unquoted word starting with `=` as a command lookup, so the `echo =====` separators the model writes between reads aborted the rest of the line and later reads silently never ran (122 times across 37 sessions in three weeks). **Why it generalizes:** zsh is the default shell on every Mac, and the separator habit is the model's, not the owner's.
+
 ## 2026-09-09 — LLM-rules v5: quote the line itself in any approval ask
 - **New rule under Chat responses: quote the line itself in any approval ask.** **Origin:** the model filed a new hub line and ended with "Veto or keep the new hub lead line?"; the owner had to go searching for what it referred to and asked for a rule that the position be restated verbatim. **Why it generalizes:** the existing "give enough context to answer cold" rule covers before/after text, but a model still tends to refer to a line by name in the closing recap; the fix is to quote the exact text inside the ask itself, every time, even when the message already showed it.
 

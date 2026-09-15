@@ -34,6 +34,7 @@ Each layer keeps only `CLAUDE.md`, `wiki.md`, `log.md`, and `Logs/`. Each layer'
 - **Tool:** <Claude Code / Cursor / other>. **Entry file:** <CLAUDE.md with the `@.system/LLM-rules.md` import / pasted body>.
 - **Permission mode:** <e.g. Accept edits for everyday wiki work; Plan for big jobs; Manual while learning>. Changed by <where the setting lives>.
 - **Sync:** <Dropbox / iCloud / OneDrive / none>; workspace marked available offline: <yes/no>.
+- **Shell:** <zsh / bash>. On a Mac, `setopt NO_EQUALS` added to `~/.zshrc`: <yes/no> (see README round 2).
 
 ## Key files: read these before the named task
 | Before doing this | Read this |

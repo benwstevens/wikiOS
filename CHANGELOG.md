@@ -2,6 +2,9 @@
 
 One entry per `schema_version` bump of any `system/` file, newest first. (Template-only changes are also recorded here, marked as such — templates carry no `schema_version`.)
 
+## 2026-10-06: README explains why wikiOS is not an automatic memory system (no schema bump)
+- **New paragraph in "Where this comes from": "Why not an automatic memory system."** It names the open-source agent-memory systems whose code was reviewed (Mem0, Hindsight, memU, Cognee, Graphiti, OpenViking, Letta Code, LongMemory) and gives four reasons wikiOS does not let the model write memory without review: suggestions harden into positions, uncurated memory accumulates, injected instructions can persist, and the memory is not readable by its owner. **Origin:** the owner had the code of ten repositories from a widely shared list reviewed in a sandbox and wanted the reasoning on the record. **Why it generalizes:** every newcomer who has heard of these tools will ask why wikiOS is built differently.
+
 ## 2026-09-15 — README and customization template: the zsh `=` trap (no schema bump)
 - **README round 2 ("The tool") and `templates/customization.md` (Tool and permission mode)** now tell a Mac user to add `setopt NO_EQUALS` to `~/.zshrc`. **Origin:** in the origin install, compound read commands kept failing with `(eval):1: ==== not found`. zsh treats an unquoted word starting with `=` as a command lookup, so the `echo =====` separators the model writes between reads aborted the rest of the line and later reads silently never ran (122 times across 37 sessions in three weeks). **Why it generalizes:** zsh is the default shell on every Mac, and the separator habit is the model's, not the owner's.
 

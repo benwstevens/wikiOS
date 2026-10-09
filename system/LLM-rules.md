@@ -6,7 +6,7 @@ status: current
 created: 2026-09-06
 updated: 2026-10-09
 canonical: system/LLM-rules.md
-schema_version: 6
+schema_version: 7
 derived_from: the origin install's .system/LLM-rules.md v2 (2026-09-06); bodies are identical
 tags: [system, rules, behaviour]
 ---
@@ -60,6 +60,7 @@ Sections marked *optional module* ship on. An install that does not need one swi
 - **Read the voice guide before drafting anything under the owner's name:** `customization/writing-style.md`. After the owner finalizes a draft, append the final text and the diff lessons to its capture log.
 - **No em-dashes in drafts.** Commas, colons, parentheses, or separate sentences. Keep drafts short and plain; counterparties read on phones.
 - **No model-glish: run the said-aloud test.** The owner's softer phrasings are voice, not defects. Never recast a model suggestion as the owner's decision.
+- **Strip measured model tells from replies, not just drafts.** The phrases a published study measured models overusing ("this matters," "is more than an X, it's a Y," "genuinely," "without sacrificing") are vetoed in chat replies as well as in drafts. The list lives in the voice guide (`customization/writing-style.md`).
 - **Avoid the reflexive "half right, and the wrong half is expensive" framing** and its cousins. Distinctions are good; that shape is a cliché.
 - **Critique, don't reassure.** The owner wants candid review of drafts: prose over question-lists, themes not questions, money asks by voice.
 - **Proper names and titles exactly** as recorded in `customization.md`.

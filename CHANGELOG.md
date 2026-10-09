@@ -2,6 +2,9 @@
 
 One entry per `schema_version` bump of any `system/` file, newest first. (Template-only changes are also recorded here, marked as such — templates carry no `schema_version`.)
 
+## 2026-10-09 (later) — LLM-rules v7: strip measured model tells from replies, not just drafts
+- **New rule in the voice module: the phrases a published study measured models overusing are vetoed in chat replies as well as in drafts.** The list itself lives in the install's voice guide. **Origin:** the owner had the model add a 2026 study of model writing tells to the install's voice guide, then extended the vetoes to the model's own chat replies. The study rewrote about 10,000 human articles with ten models and counted phrases used at least twice the human rate ("this matters," "is more than an X, it's a Y," "genuinely," "without sacrificing"). **Why it generalizes:** every install's owner reads the model's replies as well as its drafts, and the same tells show up in both. The rule sits in the voice module because the list lives in the voice guide.
+
 ## 2026-10-09 — LLM-rules v6: ask before reading outside the workspace
 - **New rule under Working together: ask before reading anything outside the workspace folder, even read-only.** **Origin:** in a session about an unrelated app, the model in auto mode ran read-only checks of system folders outside the workspace without asking. The owner had assumed the workspace folder was a boundary; it is only the starting folder, and the session runs as the owner's user account. **Why it generalizes:** every install has the same gap between the folder the owner thinks the model is confined to and what the model can actually read, and the permission mode alone does not close it.
 

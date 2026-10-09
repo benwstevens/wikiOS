@@ -4,9 +4,9 @@ description: The always-on behaviour rules for any model working in this workspa
 type: rules
 status: current
 created: 2026-09-06
-updated: 2026-09-09
+updated: 2026-10-09
 canonical: system/LLM-rules.md
-schema_version: 5
+schema_version: 6
 derived_from: the origin install's .system/LLM-rules.md v2 (2026-09-06); bodies are identical
 tags: [system, rules, behaviour]
 ---
@@ -37,6 +37,7 @@ Sections marked *optional module* ship on. An install that does not need one swi
 - **Write the plain thing, not the term of art.** If a word is doing three jobs ("gate" meant a precondition, a check-first step, and an approval), say which one you mean in ordinary words.
 - **Name a repeating pattern once, neutrally.** No tallies, no "this is the Nth time," no using the owner's name for emphasis.
 - **Never defer bookkeeping behind a confirmation that may not come.** Write the session log and the file updates now with what is known; mark unsettled facts open; amend later (wiki-os §4).
+- **Ask before reading anything outside the workspace folder, even read-only.** This holds even when the session's permission mode would let the command run without a prompt.
 
 ## Provenance and evidence
 

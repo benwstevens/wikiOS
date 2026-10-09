@@ -2,6 +2,9 @@
 
 One entry per `schema_version` bump of any `system/` file, newest first. (Template-only changes are also recorded here, marked as such — templates carry no `schema_version`.)
 
+## 2026-10-09 — LLM-rules v6: ask before reading outside the workspace
+- **New rule under Working together: ask before reading anything outside the workspace folder, even read-only.** **Origin:** in a session about an unrelated app, the model in auto mode ran read-only checks of system folders outside the workspace without asking. The owner had assumed the workspace folder was a boundary; it is only the starting folder, and the session runs as the owner's user account. **Why it generalizes:** every install has the same gap between the folder the owner thinks the model is confined to and what the model can actually read, and the permission mode alone does not close it.
+
 ## 2026-10-06: README explains why wikiOS is not an automatic memory system (no schema bump)
 - **New paragraph in "Where this comes from": "Why not an automatic memory system."** It names the open-source agent-memory systems whose code was reviewed (Mem0, Hindsight, memU, Cognee, Graphiti, OpenViking, Letta Code, LongMemory) and gives four reasons wikiOS does not let the model write memory without review: suggestions harden into positions, uncurated memory accumulates, injected instructions can persist, and the memory is not readable by its owner. **Origin:** the owner had the code of ten repositories from a widely shared list reviewed in a sandbox and wanted the reasoning on the record. **Why it generalizes:** every newcomer who has heard of these tools will ask why wikiOS is built differently.
 

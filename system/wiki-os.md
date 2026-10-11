@@ -4,10 +4,10 @@ description: The single canonical home for the cross-cutting rules every layer a
 type: schema
 status: current
 created: 2026-07-03
-updated: 2026-09-07
+updated: 2026-10-11
 canonical: system/wiki-os.md
-schema_version: 12
-derived_from: the origin install's .system/wiki-os.md, schema_version 18 (2026-09-07); bodies are identical
+schema_version: 13
+derived_from: the origin install's .system/wiki-os.md, schema_version 20 (2026-10-11); bodies are identical
 tags: [system, schema, conventions]
 ---
 
@@ -59,6 +59,7 @@ A **big project** is any multi-step process we set out to run together — a res
 **c. Build in a verify-and-correct loop.** Producing facts is not the same as producing *correct* facts. After each result, step back and check it against reality before trusting or acting on it — and loop until it holds.
 - *Cautionary anchor — the fire station.* A search once reported that a town was about to build a fire station. On a call to offer help, the station turned out to have stood for 13 years, and the person who answered was sitting inside it. Surfaced data can be flatly wrong.
 - *Model to emulate — the book-distiller script* (a program from the origin install that turns books into summaries). Write code, look at the real output, judge whether it is right, fix it, regenerate, and loop — until it is right. That cycle is the standard for any job that generates facts or artifacts.
+- *When the loop stalls, call an advisor.* If the same check fails twice in a row, or an error comes back after it was fixed, stop fixing and get a second opinion. Give a fresh helper agent the record: `plan.md`, the work so far, and the checks that failed. Tell it to assume something upstream is wrong and to answer one question: what is going wrong, and what should change? The advisor reads and advises but never edits. Do the same once before calling a big project done, asking what in the result is most likely wrong. Note in `plan.md` what the advisor said and what we did about it. Its advice still goes through the loop like any other result. If it suggests changing the scope or the approach, that goes back to the owner, like any other change to the plan.
 
 ## 4. Log every session
 

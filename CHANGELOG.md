@@ -2,6 +2,9 @@
 
 One entry per `schema_version` bump of any `system/` file, newest first. (Template-only changes are also recorded here, marked as such — templates carry no `schema_version`.)
 
+## 2026-10-11 — wiki-os v13: call an advisor when the verify loop stalls
+- **New bullet at the end of §3c: when the loop stalls, call an advisor.** If the same check fails twice in a row, or an error returns after a fix, the model stops fixing and hands a fresh helper agent `plan.md`, the work so far, and the failed checks, told to assume something upstream is wrong. The advisor reads and advises but never edits. The same check runs once before a big project is called done. Advice goes through the loop like any other result; a change of scope or approach goes back to the owner. **Origin:** the owner compared wikiOS with a published multi-model coding workflow whose "advisor" reads the session at decision points; the model proposed borrowing that one piece and the owner adopted it. **Why it generalizes:** any verify loop can spin on the same failure, and a model fixing its own work tends to repeat its own diagnosis.
+
 ## 2026-10-09 (later) — LLM-rules v7: strip measured model tells from replies, not just drafts
 - **New rule in the voice module: the phrases a published study measured models overusing are vetoed in chat replies as well as in drafts.** The list itself lives in the install's voice guide. **Origin:** the owner had the model add a 2026 study of model writing tells to the install's voice guide, then extended the vetoes to the model's own chat replies. The study rewrote about 10,000 human articles with ten models and counted phrases used at least twice the human rate ("this matters," "is more than an X, it's a Y," "genuinely," "without sacrificing"). **Why it generalizes:** every install's owner reads the model's replies as well as its drafts, and the same tells show up in both. The rule sits in the voice module because the list lives in the voice guide.
 

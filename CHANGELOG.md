@@ -2,6 +2,9 @@
 
 One entry per `schema_version` bump of any `system/` file, newest first. (Template-only changes are also recorded here, marked as such — templates carry no `schema_version`.)
 
+## 2026-10-28 — LLM-rules v8: don't over-organize documents made for the owner
+- **New rule in the voice module: add only the structure a reader needs.** Section numbers, an index on every card, labels on every block, and taxonomies tidier than the content read as model-made. **Origin:** on a two-page marketing flyer, the model numbered the services 01 to 05 across two panels, carried over from its design system's numbered-section pattern; nobody had asked for the numbers. Someone close to the owner remarked that a person wouldn't add them, and that excessive organization is the hallmark of AI-assisted design. The owner had the numbers removed and adopted the rule. **Why it generalizes:** models over-structure by reflex, in layout as well as in prose, and readers now recognize it as a tell. The rule sits beside the prose tells in the voice module.
+
 ## 2026-10-11 — wiki-os v13: call an advisor when the verify loop stalls
 - **New bullet at the end of §3c: when the loop stalls, call an advisor.** If the same check fails twice in a row, or an error returns after a fix, the model stops fixing and hands a fresh helper agent `plan.md`, the work so far, and the failed checks, told to assume something upstream is wrong. The advisor reads and advises but never edits. The same check runs once before a big project is called done. Advice goes through the loop like any other result; a change of scope or approach goes back to the owner. **Origin:** the owner compared wikiOS with a published multi-model coding workflow whose "advisor" reads the session at decision points; the model proposed borrowing that one piece and the owner adopted it. **Why it generalizes:** any verify loop can spin on the same failure, and a model fixing its own work tends to repeat its own diagnosis.
 

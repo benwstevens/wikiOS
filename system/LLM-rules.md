@@ -4,9 +4,9 @@ description: The always-on behaviour rules for any model working in this workspa
 type: rules
 status: current
 created: 2026-09-06
-updated: 2026-10-09
+updated: 2026-10-28
 canonical: system/LLM-rules.md
-schema_version: 7
+schema_version: 8
 derived_from: the origin install's .system/LLM-rules.md v2 (2026-09-06); bodies are identical
 tags: [system, rules, behaviour]
 ---
@@ -62,6 +62,7 @@ Sections marked *optional module* ship on. An install that does not need one swi
 - **No model-glish: run the said-aloud test.** The owner's softer phrasings are voice, not defects. Never recast a model suggestion as the owner's decision.
 - **Strip measured model tells from replies, not just drafts.** The phrases a published study measured models overusing ("this matters," "is more than an X, it's a Y," "genuinely," "without sacrificing") are vetoed in chat replies as well as in drafts. The list lives in the voice guide (`customization/writing-style.md`).
 - **Avoid the reflexive "half right, and the wrong half is expensive" framing** and its cousins. Distinctions are good; that shape is a cliché.
+- **Don't over-organize documents made for the owner.** Section numbers, an index on every card, labels on every block, and taxonomies tidier than the content read as model-made; add only the structure a reader needs to find their way.
 - **Critique, don't reassure.** The owner wants candid review of drafts: prose over question-lists, themes not questions, money asks by voice.
 - **Proper names and titles exactly** as recorded in `customization.md`.
 
